@@ -1,24 +1,142 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
+
 import './App.css';
+import ProjectsPage from './projects/ProjectsPage';
 
 function App() {
+  const [loading, setLoading] = useState<boolean>(false);
+  const [data, setData] = useState<number[] | null>(null);
+  const [page, setPage] = useState<number>(1);
+
+  function loadData() {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      if (page === 1) {
+        setData([1, 2, 3, 4, 5]);
+      } else if (page === 2) {
+        setData([6, 7, 8, 9, 10]);
+      } else {
+        setData(null);
+      }
+    }, 1000);
+  }
+
+  useEffect(loadData, [page]);
+
+  function handleNext() {
+    setPage((currentPage) => currentPage + 1);
+  }
+
+  function DropdownMenu() {
+    const [isOpen, setIsOpen] = React.useState(false);
+
+    const handleClick = () => {
+      setIsOpen((currentIsOpen) => !currentIsOpen);
+    };
+
+    // Function Component Example (using hooks)
+    // let menu;
+    // if (isOpen) {
+    //   menu = (
+    //     <ul>
+    //       <li>Edit</li>
+    //       <li>Remove</li>
+    //       <li>Archive</li>
+    //     </ul>
+    //   );
+    // }
+
+    // return (
+    //   <div>
+    //     <button onClick={handleClick}>Actions</button>
+    //     {menu}
+    //   </div>
+    // );
+
+    // Conditional Operator ? true : false
+    // return (
+    //   <div>
+    //     <button onClick={handleClick}>Actions</button>
+    //     {isOpen ? (
+    //       <ul>
+    //         <li>Edit</li>
+    //         <li>Remove</li>
+    //         <li>Archive</li>
+    //       </ul>
+    //     ) : null}
+    //   </div>
+    // );
+
+    // Logical && Operator
+    return (
+      <div>
+        <button onClick={handleClick}>Actions</button>
+        {isOpen && (
+          <ul>
+            <li>Edit</li>
+            <li>Remove</li>
+            <li>Archive</li>
+          </ul>
+        )}
+      </div>
+    );
+  }
+
+  function addMinutes(date: any, minutes: any) {
+    return new Date(date.getTime() + minutes * 60000);
+  }
+
+  function Clock() {
+    const [time, setTime] = React.useState(new Date());
+
+    const handleClick1 = () => {
+      setTime(addMinutes(time, 10));
+      setTime(addMinutes(time, 10));
+    };
+
+    const handleClick2 = () => {
+      setTime((previousTime) => addMinutes(previousTime, 10));
+      setTime((previousTime) => addMinutes(previousTime, 10));
+    };
+
+    return (
+      <div>
+        <p>{time.toLocaleTimeString()}</p>
+        <button onClick={handleClick1}>+ 10 Minutes</button>
+        <button onClick={handleClick2}>+ 10 Minutes</button>
+      </div>
+    );
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React !!!
-        </a>
-      </header>
+    <div className="container">
+      {/* <div>
+        <button onClick={handleClick}>Actions</button>
+        {menu}
+      </div> */}
+
+      {/* <div>
+        <button onClick={handleClick}>Actions</button>
+        {isOpen ? (
+          <ul>
+            <li>Edit</li>
+            <li>Remove</li>
+            <li>Archive</li>
+          </ul>
+        ) : null}
+      </div> */}
+
+      <DropdownMenu />
+
+      <ProjectsPage />
+
+      <Clock />
+
+      {loading && <p>Loading...</p>}
+      {data && <pre>{JSON.stringify(data, null, 1)}</pre>}
+      <span>Current Page: {page}</span>
+      <button onClick={handleNext}>Next</button>
     </div>
   );
 }
