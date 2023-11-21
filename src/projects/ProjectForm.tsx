@@ -1,4 +1,8 @@
-const ProjectForm = () => {
+interface ProjectFormProps {
+  onCancel: () => void;
+}
+
+const ProjectForm = ({ onCancel }: ProjectFormProps) => {
   return (
     <>
       <form className="input-group vertical">
@@ -13,8 +17,8 @@ const ProjectForm = () => {
         <div className="input-group">
           <button className="primary bordered medium">Save</button>
           <span />
-          <button type="button" className="bordered medium">
-            cancel
+          <button type="button" className="bordered medium" onClick={onCancel}>
+            Cancel
           </button>
         </div>
       </form>
