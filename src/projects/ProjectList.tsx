@@ -11,9 +11,13 @@ interface ProjectListProps {
 
 // Create a functional component that takes `projects` array as a prop
 const ProjectList = ({ projects }: ProjectListProps) => {
+  const handleEdit = (project: Project) => {
+    console.log(project);
+  };
+
   const items = projects.map((project) => (
     <div key={project.id} className="cols-sm">
-      <ProjectCard project={project} />
+      <ProjectCard project={project} onEdit={handleEdit} />
 
       <ProjectForm />
     </div>

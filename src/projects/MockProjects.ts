@@ -56,17 +56,6 @@ export const MOCK_PROJECTS = [
     budget: 5000,
     isActive: true,
   }),
-  new Project({
-    id: 6,
-    name: 'Project 6',
-    description: 'Project 6 description',
-    // imageUrl: 'https://via.placeholder.com/150',
-    imageUrl: '/assets/placeimg_500_300_arch1.jpg',
-    contractTypeId: 6,
-    contractSignedOn: new Date(),
-    budget: 6000,
-    isActive: false,
-  }),
 
   // new Project({
   //   id: 1,
