@@ -16,8 +16,12 @@ function App() {
     <Router>
       <header className="sticky">
         <span className="logo">
-          {/* <img src="/assets/logo-3.svg" alt="logo" width="49" height="99" /> */}
-          <img src="/assets/nezuko.gif" alt="logo" width="49" height="99" />
+          <img
+            src="/assets/favicon/android-chrome-512x512.png"
+            alt="logo"
+            width="49"
+            // height="99"
+          />
         </span>
 
         <NavLink to="/" className="button rounded">

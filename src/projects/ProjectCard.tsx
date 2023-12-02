@@ -22,13 +22,17 @@ const ProjectCard = (props: ProjectCardProps) => {
   return (
     <>
       <div className="card">
-        <img src={project.imageUrl} alt={project.name} />
+        <Link to={'/projects/' + project.id}>
+          <img src={project.imageUrl} alt={project.name} />
+        </Link>
+
         <section className="section dark">
           <Link to={'/projects/' + project.id}>
             <h5 className="strong">
               <strong>{project.name}</strong>
             </h5>
           </Link>
+
           <p>{formatDescription(project.description)}</p>
           <p>
             <strong>Budget: </strong>

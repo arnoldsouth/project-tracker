@@ -28,7 +28,7 @@ const ProjectPage = (props: any) => {
 
   return (
     <>
-      <div>Project Detail</div>
+      <h1>Project Detail</h1>
 
       {loading && (
         <div className="center-page">

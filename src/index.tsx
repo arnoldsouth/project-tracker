@@ -8,6 +8,8 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
+  // Why is my component rendering twice?
+  // Remove the <React.StrictMode> tag as shown below and this behavior will go away however you may not want to remove it as it doesn't happen in production.
   <React.StrictMode>
     <App />
   </React.StrictMode>
