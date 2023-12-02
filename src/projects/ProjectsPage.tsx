@@ -42,11 +42,24 @@ const ProjectsPage = () => {
 
   const saveProject = (project: Project) => {
     // console.log('Saving project: ', project);
-    let updatedProjects = projects.map((p: Project) => {
-      return p.id === project.id ? project : p;
-    });
+    // let updatedProjects = projects.map((p: Project) => {
+    //   return p.id === project.id ? project : p;
+    // });
+    // setProjects(updatedProjects);
 
-    setProjects(updatedProjects);
+    projectAPI
+      .put(project)
+      .then((updatedProject) => {
+        let updatedProjects = projects.map((p: Project) => {
+          return p.id === project.id ? new Project(updatedProject) : p;
+        });
+        setProjects(updatedProjects);
+      })
+      .catch((err) => {
+        if (err instanceof Error) {
+          setError(err.message);
+        }
+      });
   };
 
   return (
