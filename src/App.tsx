@@ -9,6 +9,7 @@ import {
   Routes,
 } from 'react-router-dom';
 import Homepage from './home/Homepage';
+import ProjectPage from './projects/ProjectPage';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/projects/:id" element={<ProjectPage />} />
         </Routes>
       </div>
     </Router>
