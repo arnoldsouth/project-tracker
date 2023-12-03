@@ -6,13 +6,14 @@ import ProjectForm from './ProjectForm';
 // Create a reusable list component
 
 // Create interface to define the properties that come into the component
+// Remove onSave in the ProjectListProps interface and update the component to not pass onSave to <ProjectForm> as it is now dispatches this action itself after importing it
 interface ProjectListProps {
   projects: Project[];
-  onSave: (project: Project) => void;
+  // onSave: (project: Project) => void;
 }
 
 // Create a functional component that takes `projects` array as a prop
-const ProjectList = ({ projects, onSave }: ProjectListProps) => {
+const ProjectList = ({ projects }: ProjectListProps) => {
   const [projectBeingEdited, setProjectBeingEdited] = useState({});
 
   const handleEdit = (project: Project) => {
@@ -33,7 +34,7 @@ const ProjectList = ({ projects, onSave }: ProjectListProps) => {
               <ProjectForm
                 project={project}
                 onCancel={cancelEditing}
-                onSave={onSave}
+                // onSave={onSave}
               />
             ) : (
               <ProjectCard project={project} onEdit={handleEdit} />

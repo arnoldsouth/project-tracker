@@ -1,4 +1,5 @@
 import { ThunkAction } from 'redux-thunk';
+
 import {
   LOAD_PROJECTS_FAILURE,
   LOAD_PROJECTS_REQUEST,
@@ -8,9 +9,10 @@ import {
   SAVE_PROJECT_REQUEST,
   SAVE_PROJECT_SUCCESS,
 } from './projectTypes';
-import { Action } from 'redux';
+import { Action, AnyAction } from 'redux';
 import { projectAPI } from '../projectAPI';
 import { Project } from '../Project';
+import { AppState } from '../../state';
 
 // Create action creator functions
 

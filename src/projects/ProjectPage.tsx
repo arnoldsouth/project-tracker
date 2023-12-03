@@ -3,12 +3,15 @@ import { Project } from './Project';
 import { useParams } from 'react-router-dom';
 import { projectAPI } from './projectAPI';
 import ProjectDetail from './ProjectDetail';
+import { useSelector } from 'react-redux';
+import { AppState, initialAppState } from '../state';
+import { useDispatch } from 'react-redux';
+import { loadProjects } from './state/projectActions';
 
 const ProjectPage = (props: any) => {
   const [loading, setLoading] = useState(false);
   const [project, setProject] = useState<Project | null>(null);
   const [error, setError] = useState<string | null>(null);
-
   const params = useParams();
   const id = Number(params.id);
 
