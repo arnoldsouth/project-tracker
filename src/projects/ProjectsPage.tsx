@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
-// import { MOCK_PROJECTS } from './MockProjects';
+
 import { Project } from './Project';
 import ProjectList from './ProjectList';
 import { projectAPI } from './projectAPI';
 
 const ProjectsPage = () => {
-  // const [projects, setProjects] = useState<Project[]>(MOCK_PROJECTS);
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | undefined>(undefined);
